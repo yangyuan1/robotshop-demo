@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>机器人商城</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1>机器人商城</h1>
+    </div>
+
+    <div class="col-md-12" id="robot-list">
+      <div class="row">
+        <div class="col-lg-12">
+          <p id="account" class="welcome pull-right"></p>
+          <p id="accountBalance" class="welcome pull-left"></p>
+        </div>
+      </div>
+
+      <div class="row panel panel-default">
+        <div class="panel-heading clearfix">
+          <div class="panel-title">
+            <button class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#sellRobot">出售机器人</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="robotsRow" class="row">
+      </div>
+    </div>
+  </div>
+
+
+  <div id="robotTemplate" style="display: none;">
+    <div class="row-lg-12">
+      <div class="panel panel-default panel-robot">
+        <div class="panel-heading">
+          <h3 class="panel-title"></h3>
+        </div>
+        <div class="panel-body">
+          <strong>机器人功能</strong>: <span class="robot-description"></span><br/>
+          <strong>价格 (ETH)</strong>: <span class="robot-price"></span><br/>
+          <strong>卖家账户</strong>: <span class="robot-seller"></span><br/>
+        </div>
+        <div class="panel-footer">
+          <button type="button" class="btn btn-primary btn-success btn-buy" onclick="App.buyRobot(); return false;">购买</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="sellRobot" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">出售你的机器人</h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-lg-12">
+              <form>
+                <div class="form-group">
+                  <label for="robot_name">机器人名称</label>
+                  <input type="text" class="form-control" id="robot_name" placeholder="输入机器人的名称">
+                </div>
+                <div class="form-group">
+                  <label for="price">价格</label>
+                  <input type="number" class="form-control" id="robot_price" placeholder="1" pattern="[0-9]+([\.,][0-9]+)?" step="0.01">
+                </div>
+                <div class="form-group">
+                  <label for="description">功能</label>
+                  <textarea type="text" class="form-control vresize" id="robot_description" placeholder="描述你的机器人有什么功能" maxlength="255"></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btn-success" data-dismiss="modal" onclick="App.sellRobot(); return false;">提交</button>
+          <button type="button" class="btn" data-dismiss="modal">关闭</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
